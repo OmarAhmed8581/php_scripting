@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h1>Window Screen</h1>
+<h2>Screen Properties</h2>
+
+<div id="demo"></div>
+
+<script>
+let text = "Total width/height: " + screen.width + "*" + screen.height + "<br>" +
+"Available width/height: " + screen.availWidth + "*" + screen.availHeight + "<br>" +
+"Color depth: " + screen.colorDepth + "<br>" +
+"Color resolution: " + screen.pixelDepth;
+
+document.getElementById("demo").innerHTML = text;
+</script>
+
+</body>
+</html>

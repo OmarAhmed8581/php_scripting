@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <!-- <link rel="manifest" href="site.webmanifest" /> -->
+    <title>Assignment</title>
+    <link rel="stylesheet" href="./style.css" />
+    <!-- <link rel="stylesheet" href="./style1.css" /> -->
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css"
+      rel="stylesheet"
+    />
+  </head>
+
+
+
+  <body>
+
+    <nav id="navbar">
+      <ul>
+        <li class="dropdown">
+          <a href="index.html" class="dropbtn">Home</a>
+          <div class="dropdown-content"></div>
+        </li>
+        <li class="dropdown">
+          <a href="#" class="dropbtn">Course</a>
+          <div class="dropdown-content">
+            <a href="https://www.zybooks.com/" target="_blank">ZyBooks</a>
+            <a href="https://tophat.com/" target="_blank">TopHat</a>
+            <a
+              href="https://drive.google.com/open?id=1AsHhIFfQ3yNE_m2z4wswRfKh77K0UH9w"
+              target="_blank"
+              >Course Google Drive</a
+            >
+            <a href="https://www.w3schools.com/" target="_blank">W3Schools</a>
+          </div>
+        </li>
+        <li class="dropdown">
+          <a href="#" class="dropbtn">About</a>
+          <div class="dropdown-content">
+            <a href="developer.html">About The Developer</a>
+            <a href="contact.html">Contact</a>
+          </div>
+        </li>
+        <li class="dropdown">
+          <a href="#" class="dropbtn">Browser</a>
+          <div class="dropdown-content">
+            <a href="navigator.html">Navigator</a>
+            <a href="window.html">Window</a>
+            <a href="screen.html">Screen</a>
+            <a href="location.html">Location</a>
+            <a href="geolocation.html">Geolocation</a>
+          </div>
+        </li>
+        <li class="dropdown">
+          <a href="#" class="dropbtn">Search</a>
+          <div class="dropdown-content">
+            <a href="fromFile.html">From File</a>
+            <a href="googleAPI.html">Google API</a>
+          </div>
+        </li>
+        <li class="dropdown">
+          <a href="#" class="dropbtn">Project</a>
+          <div class="dropdown-content">
+            <a href="./parse.html">Parse</a>
+            <a href="./report.html">Report</a>
+          </div>
+        </li>
+      </ul>
+    </nav>
+
+
+
+    <section>
+      <div class="imgBox">
+        <div class="gradient"></div>
+        <img src="./Assets/img1.svg" class="loginback" alt="" />
+      </div>
+
+      <div class="contentBox">
+        <div class="formBox">
+          <h2>Parse Screen</h2>
+          <img src="./images/icon.png" class="img" alt="" />
+          <form action="word.php" method="post">
+            <div class="row">
+              <div class="form-group">
+                <label for="first">Source Name</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  placeholder="Source Name"
+                  id="name"
+                  name="source_name"
+                  required=""
+                />
+              </div>
+              <div class="form-group">
+                <label for="url"
+                  >Source URL <small>Please include http://</small></label
+                >
+                <input
+                  type="url"
+                  class="form-control"
+                  id="url"
+                  placeholder="Source URL"
+                  required=""
+                  name="url"
+                />
+              </div>
+              <div class="form-group">
+                <label for="company">Source Begin</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  placeholder="Source Begin"
+                  id="begin"
+                  required=""
+                  name="source_begin"
+                />
+              </div>
+
+              <div class="form-group">
+                <label for="phone">Source End</label>
+                <input
+                  type="tel"
+                  class="form-control"
+                  id="end"
+                  placeholder="Source End"
+                  required=""
+                  name="source_end"
+                />
+              </div>
+            </div>
+            <!--  row   -->
+
+            <!-- <button type="submit" class="btn btn-primary">Parse</button>
+            </form> -->
+            <div class="inputBox">
+              <button class="button" type="submit" name="submit">
+                <a>Parse</a>
+              </button>
+            </div>
+            <div class="bg-logo">
+              <img class="logoImg" src="./images/logo.png" alt="" width="460" />
+            </div>
+          </form>
+        </div>
+      </div>
+    </section>
+  </body>
+</html>

@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- <link rel="manifest" href="site.webmanifest" /> -->
+    <title>Assignment</title>
+    <link rel="stylesheet" href="./style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+      integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+  </head>
+
+  <body>
+    <nav id="navbar">
+      <ul>
+        <li class="dropdown">
+          <a href="index.html" class="dropbtn">Home</a>
+          <div class="dropdown-content"></div>
+        </li>
+        <li class="dropdown">
+          <a href="#" class="dropbtn">Course</a>
+          <div class="dropdown-content">
+            <a href="https://www.zybooks.com/" target="_blank">ZyBooks</a>
+            <a href="https://tophat.com/" target="_blank">TopHat</a>
+            <a
+              href="https://drive.google.com/open?id=1AsHhIFfQ3yNE_m2z4wswRfKh77K0UH9w"
+              target="_blank"
+              >Course Google Drive</a
+            >
+            <a href="https://www.w3schools.com/" target="_blank">W3Schools</a>
+          </div>
+        </li>
+        <li class="dropdown">
+          <a href="#" class="dropbtn">About</a>
+          <div class="dropdown-content">
+            <a href="developer.html">About The Developer</a>
+            <a href="contact.html">Contact</a>
+          </div>
+        </li>
+        <li class="dropdown">
+          <a href="#" class="dropbtn">Browser</a>
+          <div class="dropdown-content">
+            <a href="navigator.html">Navigator</a>
+            <a href="window.html">Window</a>
+            <a href="screen.html">Screen</a>
+            <a href="location.html">Location</a>
+            <a href="geolocation.html">Geolocation</a>
+          </div>
+        </li>
+        <li class="dropdown">
+          <a href="#" class="dropbtn">Search</a>
+          <div class="dropdown-content">
+            <a href="fromFile.html">From File</a>
+            <a href="googleAPI.html">Google API</a>
+          </div>
+        </li>
+        <li class="dropdown">
+          <a href="#" class="dropbtn">Project</a>
+          <div class="dropdown-content">
+            <a href="./parse.html">Parse</a>
+            <a href="./report.html">Report</a>
+          </div>
+        </li>
+      </ul>
+    </nav>
+
+
+    <section style="width: 80%">
+      <div class="tableBox">
+        <a href="./parse.html" type="button" class="parseBtn">Parse</a>
+        <table>
+          <thead>
+            <th>S.No</th>
+            <th>Name</th>
+            <th>URL</th>
+            <th>Begin</th>
+            <th>End</th>
+            <th>Parsed DTM</th>
+            <th>Words</th>
+          </thead>
+          <tbody id="parse_view">
+            <!-- <tr>
+              <td>Peter</td>
+              <td>Griffin</td>
+              <td>$100</td>
+              <td>Peter</td>
+              <td>Griffin</td>
+              <td>$100</td>
+              <td>
+                <button class="">
+                  <i class="fa-solid fa-eye" onclick="openModal()"></i>
+                </button>
+              </td>
+            </tr> -->
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- <button class="show-modal">Show modal 3</button> -->
+
+    <div class="modal hidden" style="overflow-y: scroll; height: 50%">
+      <button class="close-modal" onclick="closeModal()">&times;</button>
+      <table>
+        <thead>
+          <th>Word</th>
+          <th>Frequency</th>
+          <th>percentage</th>
+        </thead>
+        <tbody id="parse_detail">
+          <!-- <tr>
+            <td>Peter</td>
+            <td>Griffin</td>
+            <td>$100</td>
+          </tr> -->
+        </tbody>
+      </table>
+    </div>
+
+    <div class="overlay hidden" onclick="closeModal()"></div>
+
+    <script>
+      const modal = document.querySelector(".modal");
+      const overlay = document.querySelector(".overlay");
+      const btnCloseModal = document.querySelector(".close-modal");
+      const btnsOpenModal = document.querySelectorAll(".show-modal");
+      const openModal = function (value) {
+        console.log(value);
+        var xhttp1 = new XMLHttpRequest();
+        xhttp1.onload = function () {
+          var data1 = JSON.parse(this.responseText);
+          console.log(data1);
+          var table = document.getElementById("parse_detail");
+          $('#parse_detail > tr').remove();
+          for (var i = 0; i < data1.length; i++) {
+            var row = table.insertRow(-1);
+            var td = row.insertCell(0);
+            td.innerHTML = data1[i][0];
+            td = row.insertCell(1);
+            td.innerHTML = data1[i][1];
+            td = row.insertCell(2);
+            td.innerHTML = data1[i][2] + " %";
+          }
+
+          modal.classList.remove("hidden");
+          overlay.classList.remove("hidden");
+        };
+        xhttp1.open("GET", "fun.php?type=detail&id=" + value);
+        xhttp1.send();
+      };
+
+      const xhttp = new XMLHttpRequest();
+      xhttp.onload = function () {
+        var data1 = JSON.parse(this.responseText);
+        console.log(data1);
+        var table = document.getElementById("parse_view");
+        for (var i = 0; i < data1.length; i++) {
+          var row = table.insertRow(-1);
+
+          var td = row.insertCell(0);
+          td.innerHTML = String(i + 1);
+
+          td = row.insertCell(1);
+          td.innerHTML = data1[i][1];
+
+          td = row.insertCell(2);
+          td.innerHTML = data1[i][2];
+
+          td = row.insertCell(3);
+          td.innerHTML = data1[i][3];
+
+          td = row.insertCell(4);
+          td.innerHTML = data1[i][4];
+
+          td = row.insertCell(5);
+          td.innerHTML = data1[i][5];
+
+          td = row.insertCell(6);
+          td.innerHTML =
+            '<button id="' +
+            data1[i][0] +
+            '" class="" onclick="openModal(this.id)" style="cursor:pointer"><i class="fa-solid fa-eye" ></i></button>';
+        }
+      };
+      xhttp.open("GET", "fun.php?type=view");
+      xhttp.send();
+
+      const closeModal = function () {
+        modal.classList.add("hidden");
+        overlay.classList.add("hidden");
+      };
+    </script>
+  </body>
+</html>
